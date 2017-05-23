@@ -1,0 +1,50 @@
+@model SkuViewModel
+
+<a asp-action="Index"
+   class="btn btn-primary">
+    Назад
+</a>
+
+<form asp-controller="Sku" asp-action="Create" class="form-horizontal" method="post" role="form">
+    <h4>Новое SKU</h4>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Name" class="col-md-1 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SkuUnit" class="col-md-1 control-label"></label>
+        <div class="col-md-10">
+            <select asp-for="SkuUnit" asp-items="@Html.GetEnumSelectList<SkuUnit>()" class="form-control"></select>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="col-md-1 control-label"></label>
+        <div class="col-md-10">
+            <textarea asp-for="Description" class="form-control" rows="2"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CatergorSkuSelected" class="col-md-1 control-label"></label>
+        <div class="col-md-10">
+            <select asp-for="CatergorSkuSelected"asp-items="@ViewBag.CategorySku" class="form-control"></select>
+            <span asp-validation-for="CatergorSkuSelected" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-primary" value="Саздать SKU"/>
+        </div>
+    </div>
+</form>
